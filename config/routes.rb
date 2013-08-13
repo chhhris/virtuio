@@ -1,6 +1,8 @@
 Virtuit::Application.routes.draw do
   resources :users do
-    resource :clients
+    resource :clients,
+    :controller => 'users/clients',
+    :only => [:new, :create]
   end
   
   resources :clients
