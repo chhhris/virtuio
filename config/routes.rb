@@ -6,6 +6,7 @@ Virtuit::Application.routes.draw do
   end
   
   resources :clients
+  resources :charges
 
   root :to => 'home#index'
 
