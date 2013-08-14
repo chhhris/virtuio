@@ -24,13 +24,8 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.json
   def new
-    @disable_nav = true
     @user = User.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @user }
-    end
+    @disable_nav = true
   end
 
   # GET /users/1/edit
@@ -42,16 +37,11 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
-
-    respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'Your account was successfully created.' }
-        format.json { render json: @user, status: :created, location: @user }
+        redirect_to root_url, notice: 'Your account was successfully created.'
       else
-        format.html { render action: "new" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        render "new"
       end
-    end
   end
 
   # PUT /users/1

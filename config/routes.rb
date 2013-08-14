@@ -6,8 +6,15 @@ Virtuit::Application.routes.draw do
   
   resources :clients
   resources :charges
+  resources :sessions
 
-  root :to => 'home#index'
+  root :to => 'sessions#signup'
+
+  get 'login',     to: 'sessions#new',     as: 'login'
+  post 'login',    to: 'sessions#login'
+  get 'signup',    to: 'sessions#signup',  as: 'signup'
+  post 'signup',   to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy', as: 'logout'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -3,13 +3,14 @@
 		<div class="navbar-brand">virtu i/o</div>
   </div>
   <div class="col-lg-1">
-  	<a class="pull-right" href="#">Login</a>
+  	<a class="pull-right" href="/login">Login</a>
   </div>
 </div>
 <div class="col-lg-12">
 	<div class="col-lg-6">
 		<div class="hero-unit"></div>
 	</div>
+	<p id="notice"><%= notice %></p>
 	<div class="col-lg-6 well-style">
 	  <form class="form-horizontal well">
 	    <fieldset class="fieldset-style">
@@ -36,7 +37,7 @@
 		        <div class="form-group">
 		          <%= f.password_field :password_confirmation, :placeholder => "Confirm Password"  %>
 		        </div>
-		        <div class="actions form-btn-style">
+		        <div class="actions">
 		          <%= f.submit 'Sign Up', :class => "btn btn-primary" %>
 		        </div>
 	        </div>
