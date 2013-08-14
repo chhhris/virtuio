@@ -11,23 +11,28 @@ class Users::ClientsController < ApplicationController
 	end
 
 	def create
-		@client = Client.new(params[:client])
-		@client.name = params[:client][:name]
-		@client.billing = params[:client][:billing]
-		@user = User.find(params[:user_id])
-		@client.user_id = @user.id
+	 	def create
+	    @user = User.find(params[:user_id])
+	    @client = @user.clients.create(params[:client])
+	    redirect_to user_path(@user)
+  	end
 
-		respond_to do |format|
+		# @client = Client.new(params[:client])
+		# @client.name = params[:client][:name]
+		# @client.billing = params[:client][:billing]
+		# @user = User.find(params[:user_id])
+		# @client.user_id = @user.id
 
-	    if @client.save
-	    	raise params.inspect
-	      format.html { redirect_to @user, notice: 'Client was successfully added.' }
-	      format.json { render json: @user, status: :created, location: user_path(@user) }
-	    else
-	      format.html { render action: "new" }
-	      format.json { render json: @client.errors, status: :unprocessable_entity }
-    end
-  end
+		# respond_to do |format|
+
+	 #    if @client.save
+	 #    	raise params.inspect
+	 #      format.html { redirect_to @user, notice: 'Client was successfully added.' }
+	 #      format.json { render json: @user, status: :created, location: user_path(@user) }
+	 #    else
+	 #      format.html { render action: "new" }
+	 #      format.json { render json: @client.errors, status: :unprocessable_entity }
+  #   end
 
 		
 	end
